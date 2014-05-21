@@ -33,6 +33,7 @@ $$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE FUNCTION whatever.testunexpectedexception() RETURNS SETOF TEXT AS $$
 BEGIN
+    RETURN NEXT fail('Should not affect total');
     RAISE EXCEPTION 'Runner should continue after exception in test';
 END;
 $$ LANGUAGE plpgsql;
